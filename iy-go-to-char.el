@@ -8,7 +8,7 @@
 ;; Created: 2009-08-23 01:27:34
 ;; Version: 2.0
 ;; Last-Updated: 2013-03-25 08:33:00
-;; URL: http://www.emacswiki.org/emacs/download/iy-go-to-char.el
+;; URL: https://github.com/doitian/iy-go-to-char
 ;; Compatibility: GNU Emacs 23.1.1
 
 ;;; License:
