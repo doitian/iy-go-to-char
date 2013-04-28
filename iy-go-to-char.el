@@ -255,7 +255,6 @@
   "Repeatable command to really move cursor."
   (interactive)
   (setq iy-go-to-char-start-pos (or iy-go-to-char-start-pos (point)))
-  (message "iy-go-to-char-start-pos=%S" iy-go-to-char-start-pos)
   (let ((n (if (< iy-go-to-char-start-dir 0)
                (- iy-go-to-char-last-step)
              iy-go-to-char-last-step)))
