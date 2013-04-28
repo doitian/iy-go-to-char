@@ -6,8 +6,8 @@
 ;; Filename: iy-go-to-char.el
 ;; Description: Go to char
 ;; Created: 2009-08-23 01:27:34
-;; Version: 3.0
-;; Last-Updated: 2013-04-08 08:18:00
+;; Version: 3.1
+;; Last-Updated: 2013-04-28 22:53:00
 ;; URL: https://github.com/doitian/iy-go-to-char
 ;; Compatibility: GNU Emacs 23.1.1
 
@@ -88,6 +88,11 @@
 ;; `iy-go-to-char-continue-backward'.
 
 ;;; Change Log:
+;; 2013-04-28 (3.1)
+;;
+;;    - Better integration with `multiple-cursors'.
+;;    - Refactoring documerations.
+;;
 ;; 2013-04-08 (3.0)
 ;;
 ;;    - When jump is started backward (with negative parameter, or
