@@ -39,6 +39,11 @@
 ;;
 ;;     (require 'iy-go-to-char)
 ;;
+;; To make `iy-go-to-char' works better with `multiple-cursors', add
+;; `iy-go-to-char-start-pos' to `mc/cursor-specific-vars' when mc is loaded:
+;;
+;;     (add-to-list 'mc/cursor-specific-vars 'iy-go-to-char-start-pos)
+;;
 ;; Then you can bind functions like:
 ;;
 ;;     (global-set-key (kbd "C-c f") 'iy-go-to-char)
@@ -145,6 +150,13 @@
   (when (and (boundp 'multiple-cursors-mode) multiple-cursors-mode (boundp 'mc--this-command))
     (setq mc--this-command command)))
 
+(defun iy-go-to-char--set-mc-specific-vars ()
+  "Add `iy-go-to-char-start-pos' to `mc/cursor-specific-vars'."
+  (when (boundp 'mc/cursor-specific-vars)
+    (add-to-list 'mc/cursor-specific-vars 'iy-go-to-char-start-pos))
+  (remove-hook 'multiple-cursors-mode-hook 'iy-go-to-char--set-mc-specific-vars))
+(add-hook 'multiple-cursors-mode-hook 'iy-go-to-char--set-mc-specific-vars)
+
 (defun iy-go-to-char--isearch-setup ()
   "Setup jump char as initial string for isearch."
   (remove-hook 'isearch-mode-hook 'iy-go-to-char--isearch-setup)
@@ -193,7 +205,11 @@
     (when (commandp command)
       (setq this-command command
             this-original-command command)
-      (iy-go-to-char--set-mc-command command)
+      (iy-go-to-char--set-mc-command `(lambda ()
+                                        (interactive)
+                                        (push-mark iy-go-to-char-start-pos t)
+                                        (setq iy-go-to-char-start-pos nil)
+                                        (call-interactively ',command)))
       (call-interactively command))))
 
 (defun iy-go-to-char-isearch ()
@@ -214,19 +230,27 @@
   "Kill region between jump start position and current position."
   (interactive)
   (iy-go-to-char-done)
-  (iy-go-to-char--set-mc-command 'kill-region)
+  (iy-go-to-char--set-mc-command (lambda ()
+                                   (interactive)
+                                   (kill-region (point) iy-go-to-char-start-pos)
+                                   (setq iy-go-to-char-start-pos nil)))
   (kill-region (point) (mark)))
 
 (defun iy-go-to-char-kill-ring-save ()
   "Save region between jump start position and current position."
   (interactive)
   (iy-go-to-char-done)
-  (iy-go-to-char--set-mc-command 'kill-ring-save)
+  (iy-go-to-char--set-mc-command (lambda ()
+                                   (interactive)
+                                   (kill-ring-save (point) iy-go-to-char-start-pos)
+                                   (setq iy-go-to-char-start-pos nil)))
   (kill-ring-save (point) (mark)))
 
 (defun iy-go-to-char--command ()
   "Repeatable command to really move cursor."
   (interactive)
+  (setq iy-go-to-char-start-pos (or iy-go-to-char-start-pos (point)))
+  (message "iy-go-to-char-start-pos=%S" iy-go-to-char-start-pos)
   (let ((n (if (< iy-go-to-char-start-dir 0)
                (- iy-go-to-char-last-step)
              iy-go-to-char-last-step)))
