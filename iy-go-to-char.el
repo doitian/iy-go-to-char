@@ -91,7 +91,7 @@
 ;; 2013-04-28 (3.1)
 ;;
 ;;    - Better integration with `multiple-cursors'.
-;;    - Refactoring documerations.
+;;    - Refactoring documentations.
 ;;
 ;; 2013-04-08 (3.0)
 ;;
