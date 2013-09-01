@@ -1,11 +1,12 @@
 ## iy-go-to-char.el
-*Go to next CHAR which is similar to "f" in vim*
+*Go to next CHAR which is similar to "f" and "t" in vim*
 
 ---
 
-This package defines the function `iy-go-to-char` which behaves
-like "f" in vim.  It reads a char and go the next Nth occurence of
-the char.  User can continue such search using that char key.
+This package defines the function `iy-go-to-char` which behaves like "f" in
+vim, and `iy-go-up-to-char` like "t" in vim.  It reads a char and go the
+next Nth occurence of the char.  User can continue such search using that
+char key.
 
 To use, make sure this file is on your `load-path` and put the
 following in your .emacs file:
@@ -24,7 +25,7 @@ Then you can bind functions like:
     (global-set-key (kbd "C-c ;") 'iy-go-to-or-up-to-continue)
     (global-set-key (kbd "C-c ,") 'iy-go-to-or-up-to-continue-backward)
 
-Or if you prefer up-to versions:
+Or if you prefer up-to (vim "t") versions:
 
     (global-set-key (kbd "C-c f") 'iy-go-up-to-char)
     (global-set-key (kbd "C-c F") 'iy-go-up-to-char-backward)
@@ -69,8 +70,9 @@ cross lines.  To continue search last char, use `iy-go-to-char-continue` and
 
 ### Change Log
 
-2013-04-28 (3.2)
+2013-04-28 (3.2.1)
 
+   - Fix documentations.
    - Add up-to versions: `iy-go-up-to-char`, `iy-go-up-to-char-backward`,
      `iy-go-up-to-char-continue` and `iy-go-up-to-char-continue-backward`.
 
