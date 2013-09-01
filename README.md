@@ -91,9 +91,11 @@ cross lines.  To continue search last char, use `iy-go-to-char-continue` and
 
 2013-03-25 (2.1)
    - Fix a but that I forget to set `mc--this-command`
+
 2013-03-25 (2.0)
    - Use overriding-local-map to setup keymap
    - multiple-cursors compatible
+
 2012-04-16 (1.1)
    - fix C-s/C-r to enter isearch
 
