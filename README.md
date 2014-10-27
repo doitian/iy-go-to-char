@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/doitian/iy-go-to-char.png?label=ready&title=Ready)](https://waffle.io/doitian/iy-go-to-char)
 ## iy-go-to-char.el
 *Go to next CHAR which is similar to "f" and "t" in vim*
 
