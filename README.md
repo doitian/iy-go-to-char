@@ -34,13 +34,18 @@ Or if you prefer up-to (vim "t") versions:
 You also can bind go-to methods and up-to methods to different keys.
 
 Except repeating the char key, followings keys are defined before
-quitting the search:
+quitting the search (which can be disabled by setting
+`iy-go-to-char-override-local-map` to nil):
+
+   X   -- where X is the char to be searched. Repeating it will search
+          forward the char. Can be disabled through
+          `iy-go-to-char-continue-when-repeating`
 
    ;   -- search forward the char, customizable:
-          `iy-go-to-char-key-forward`
+          `iy-go-to-char-key-forward`, `iy-go-to-char-use-key-forward`
 
    ,   -- search backward the char, customizable:
-          `iy-go-to-char-key-backward`
+          `iy-go-to-char-key-backward`, `iy-go-to-char-use-key-backward`
 
    C-g -- quit
 
@@ -70,6 +75,15 @@ cross lines.  To continue search last char, use `iy-go-to-char-continue` and
 `iy-go-to-char-continue-backward`.
 
 ### Change Log
+
+2014-10-29 (3.2.2)
+
+   - Add options `iy-go-to-char-use-key-forward`,
+     `iy-go-to-char-use-key-backward` and
+     `iy-go-to-char-continue-when-repeating` to toggle the feature that
+     continuing search by repeat typing a single key.
+   - Add option `iy-go-to-char-override-local-map` to disable the temporary
+     map after activate `iy-go-to-char`.
 
 2013-04-28 (3.2.1)
 
