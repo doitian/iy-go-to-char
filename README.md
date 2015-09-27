@@ -4,6 +4,7 @@
 
 ---
 [![License GPLv2](https://img.shields.io/badge/license-GPL_v2-green.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
+[![MELPA](http://melpa.org/packages/iy-go-to-char-badge.svg)](http://melpa.org/#/iy-go-to-char)
 
 This package defines the function `iy-go-to-char` which behaves like "f" in
 vim, and `iy-go-up-to-char` like "t" in vim.  It reads a char and go the
